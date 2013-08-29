@@ -1,5 +1,9 @@
 Rejume::Application.routes.draw do
   root to: 'pages#home'
-  resources :sessions
+  resources   :sessions, only: [:new, :create]
+  resources  :users, only: [:new, :create]
   get 'login', to: 'sessions#new', as: 'login'
+  get 'signup', to: 'users#new', as: 'signup'
+
+  resource :dashboard, only: [:show]
 end

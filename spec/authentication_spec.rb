@@ -10,4 +10,5 @@ feature 'Authentication' do
       expect(current_path).to eq login_path
     end
   end
+
 end
