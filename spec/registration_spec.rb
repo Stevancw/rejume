@@ -19,27 +19,4 @@ feature "Registration" do
       expect(page).to have_content 'Thank you for signing up!'
     end
   end
-
-  context "Given I am a registerd user" do
-
-    before(:each) do
-      @user = create(:user)
-    end
-
-    scenario "I should be able to login" do
-      login_user(@user)
-
-      expect(current_path).to eq dashboard_path
-      expect(page).to have_content 'Logged in!'
-    end
-  end
-
-  private
-
-    def login_user(user)
-      visit new_session_path
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: user.password
-      click_button 'Login'
-    end
 end

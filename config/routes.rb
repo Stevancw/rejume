@@ -4,6 +4,7 @@ Rejume::Application.routes.draw do
   resources  :users, only: [:new, :create]
   get 'login', to: 'sessions#new', as: 'login'
   get 'signup', to: 'users#new', as: 'signup'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
 
   resource :dashboard, only: [:show]
 end
