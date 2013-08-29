@@ -19,4 +19,17 @@ feature "Registration" do
       expect(page).to have_content 'Thank you for signing up!'
     end
   end
+
+  context "filling out the form with wrong credentials" do
+    it "should not create a new user and re-render the new page" do
+      visit root_path
+      click_link 'Register'
+
+      expect {
+        click_button 'Register'
+      }.to_not change(User, :count).by(1)
+
+      expect(page).to have_content 'Please review the form'
+    end
+  end
 end

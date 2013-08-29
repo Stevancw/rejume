@@ -38,6 +38,18 @@ feature 'Authentication' do
     end
   end
 
+  context "Given I am a logged in user" do
+    before(:each) do
+      @user = create(:user)
+      login_user(@user)
+    end
+
+    scenario "I should not see links to register and login" do
+      expect(page).to_not have_link 'Login'
+      expect(page).to_not have_link 'Register'
+    end
+  end
+
   private
 
     def login_user(user)
